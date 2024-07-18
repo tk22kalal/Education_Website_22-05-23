@@ -12,10 +12,15 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             const params = new URLSearchParams(window.location.search);
             const onlineLink = params.get('online_link');
-            const downloadButton = document.getElementById('downloadButton');
-            downloadButton.addEventListener('click', () => {
-                window.location.href = onlineLink;
-            });
+            if (onlineLink) {
+                const downloadButton = document.getElementById('downloadButton');
+                downloadButton.addEventListener('click', () => {
+                    window.location.href = onlineLink;
+                });
+            } else {
+                document.getElementById('downloadButton').textContent = 'No download link available';
+                document.getElementById('downloadButton').disabled = true;
+            }
         });
     </script>
 </body>
