@@ -1,14 +1,15 @@
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyCWRTng4O10IP20rAOCBXT-1t5UZVCEqKA",
-    authDomain: "project-7691f.firebaseapp.com",
-    projectId: "project-7691f",
-    storageBucket: "project-7691f.appspot.com",
-    messagingSenderId: "94778615303",
-    appId: "1:94778615303:web:2a22677e90f990d3d82ca2",
-    measurementId: "G-80YPW07Q8J"
-};
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyD3Lnmj1-ybhz6HP08V3VD-X-cOs8Z7iWU",
+          authDomain: "nextpulse-89c47.firebaseapp.com",
+          projectId: "nextpulse-89c47",
+          storageBucket: "nextpulse-89c47.appspot.com",
+          messagingSenderId: "371642835132",
+          appId: "1:371642835132:web:3695fe651f21011acff0b9",
+          measurementId: "G-CJ1E0G64XR"
+        };
 // initializing firebase SDK
 firebase.initializeApp(firebaseConfig);
 
