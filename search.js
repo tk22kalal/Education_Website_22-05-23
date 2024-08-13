@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const keywordsAndUrls = allKeywordsAndUrls.flat();
 
             // Set up event listener for the search input
-            const searchInput = document.getElementById("searchInput");
+            const searchInput = document.getElementById("input-box");
             searchInput.addEventListener("input", function () {
                 const searchTerm = searchInput.value.toLowerCase();
 
@@ -59,7 +59,7 @@ function fetchFileContent(file) {
 function extractKeywordsAndUrls(html) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
-    const anchorElements = doc.querySelectorAll(".content-table td a");
+    const anchorElements = doc.querySelectorAll(".content-table tbody td a");
 
     // Extract keywords and corresponding URLs from the anchor elements
     const keywordsAndUrls = Array.from(anchorElements).map(anchor => {
@@ -81,7 +81,7 @@ function displaySuggestions(suggestions) {
     // Display new suggestions
     suggestions.forEach(entry => {
         const listItem = document.createElement("li");
-        
+
         // Combine keyword, fileName, and platformName
         const displayText = `${entry.keyword} | ${entry.fileName} | ${entry.platformName}`;
         listItem.textContent = displayText;
