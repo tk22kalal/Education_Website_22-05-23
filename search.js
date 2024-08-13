@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // List of HTML files to include with associated file names and platform names
     const htmlFiles = [
-        { file: "Plugins/anatomyp.html", fileName: "ANATOMY", platformName: "PREPLADDER-5" },
+        { file: "Plugins/anatomycb.html", fileName: "ANATOMY", platformName: "PREPLADDER-5" },
         { file: "Plugins/biochemestryp.html", fileName: "BIOCHEMESTRY", platformName: "PREPLADDER-5" },
         { file: "Plugins/dermatologycb.html", fileName: "DERMATOLOGY", platformName: "CEREBELLUM" }
         // Repeat this pattern for any additional files
