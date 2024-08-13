@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // List of HTML files to include with associated file names and platform names
     const htmlFiles = [
         { file: "Plugins/anatomyp.html", fileName: "ANATOMY", platformName: "PREPLADDER-5" },
-        // Add other HTML file details here
+        // Add other HTML file details here as needed
     ];
 
     // Fetch all HTML files and process them
