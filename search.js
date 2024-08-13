@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     // List of HTML files to include with associated file names and platform names
     const htmlFiles = [
-        { file: "Plugins/anatomycb.html", fileName: "ANATOMY", platformName: "PREPLADDER-5" },
-        { file: "Plugins/biochemestryp.html", fileName: "BIOCHEMESTRY", platformName: "PREPLADDER-5" },
-        { file: "Plugins/dermatologycb.html", fileName: "DERMATOLOGY", platformName: "CEREBELLUM" }
-        // Repeat this pattern for any additional files
+        { file: "Plugins/anatomyp.html", fileName: "ANATOMY", platformName: "PREPLADDER-5" },
+        // Add other HTML file details here
     ];
 
     // Fetch all HTML files and process them
@@ -52,22 +50,32 @@ function fetchAndProcessFile(fileInfo) {
 function fetchFileContent(file) {
     // Fetch the content of each file using fetch API
     return fetch(file)
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Network response was not ok for ${file}`);
+            }
+            return response.text();
+        })
         .catch(error => console.error(`Error fetching ${file}:`, error));
 }
 
 function extractKeywordsAndUrls(html) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
-    const anchorElements = doc.querySelectorAll(".content-table tbody td a");
+    const anchorElements = doc.querySelectorAll(".content-table td a");
 
     // Extract keywords and corresponding URLs from the anchor elements
     const keywordsAndUrls = Array.from(anchorElements).map(anchor => {
-        return {
-            keyword: anchor.textContent.toLowerCase(),
-            url: anchor.getAttribute("href")
-        };
-    });
+        const keyword = anchor.textContent.trim().toLowerCase();
+        const url = anchor.getAttribute("href");
+
+        if (keyword && url) {
+            return { keyword, url };
+        } else {
+            console.warn("Missing keyword or URL in anchor tag:", anchor);
+            return null; // Return null to filter out later
+        }
+    }).filter(entry => entry !== null);
 
     return keywordsAndUrls;
 }
