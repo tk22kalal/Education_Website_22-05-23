@@ -7,9 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // Repeat this pattern for any additional files
     ];
 
-    // First replace all placeholders with actual botUsername
-    replacePlaceholders();
-
     // Fetch all HTML files and process them
     Promise.all(htmlFiles.map(fetchAndProcessFile))
         .then(allKeywordsAndUrls => {
@@ -35,14 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Error fetching and processing HTML files:", error));
 });
-
-function replacePlaceholders() {
-    const links = document.querySelectorAll('a[data-href*="{{botUsername}}"]');
-    links.forEach(link => {
-        const botUsername = window.botUsername; // Assuming botUsername is defined globally in botusername.js
-        link.href = link.getAttribute('data-href').replace('{{botUsername}}', botUsername);
-    });
-}
 
 function fetchAndProcessFile(fileInfo) {
     const { file, fileName, platformName } = fileInfo;
@@ -92,7 +81,7 @@ function displaySuggestions(suggestions) {
     // Display new suggestions
     suggestions.forEach(entry => {
         const listItem = document.createElement("li");
-
+        
         // Combine keyword, fileName, and platformName
         const displayText = `${entry.keyword} | ${entry.fileName} | ${entry.platformName}`;
         listItem.textContent = displayText;
